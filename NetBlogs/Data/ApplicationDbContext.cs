@@ -9,5 +9,6 @@ namespace NetBlogs.Data
             : base(options)
         {
         }
+        public DbSet<NetBlogs.Models.Blog> Blog { get; set; }
     }
 }
