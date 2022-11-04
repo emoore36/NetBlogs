@@ -35,7 +35,7 @@
 					
 					<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Read...</a>
 
-					@if (item.Author.Equals("4chrise8@gmail.com"))
+					@if (item.Author.Equals(User.Identity?.Name))
 					{
 						<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-secondary">Edit</a>
 						<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
