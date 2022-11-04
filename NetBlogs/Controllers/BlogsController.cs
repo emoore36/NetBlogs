@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -60,6 +61,11 @@ namespace NetBlogs.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                blog.Author = User.FindFirstValue(ClaimTypes.Name);
+                blog.Created = DateTime.Now;
+                blog.LastUpdated = DateTime.Now;
+
                 _context.Add(blog);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
